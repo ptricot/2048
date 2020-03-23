@@ -2,7 +2,10 @@
 #include <QQmlApplicationEngine>
 #include <QtQml>
 #include <string>
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
 #include "cell.h"
+#include "compteur.h"
 
 int main(int argc, char *argv[])
 {
@@ -29,6 +32,12 @@ int main(int argc, char *argv[])
         }
     }
     engine.load(url);
+
+    Compteur aCompteur;
+    engine.rootContext()->setContextProperty("vueObjetCpt", &aCompteur);
+
+
+
 
     return app.exec();
 }

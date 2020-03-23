@@ -15,6 +15,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         cell.cpp \
+        compteur.cpp \
         grid.cpp \
         main.cpp
 
@@ -33,4 +34,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     cell.h \
+    compteur.h \
     grid.h

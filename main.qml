@@ -1,17 +1,20 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
+import QtQuick 2.2
+import QtQuick.Window 2.2
 
 Window {
     visible: true
     width: 500
-    height: 500
+    height: 700
     color: "#4c5cdc"
-    title: qsTr("2048")
+    property alias scoretotalText: scoretotal.text
+    title: qsTr("2048 par Lhamap et Khayne")
 
     Grid {
         id: grid
+        anchors.rightMargin: 0
+        anchors.bottomMargin: 0
         anchors.leftMargin: 4
-        anchors.topMargin: 4
+        anchors.topMargin: 203
         anchors.fill: parent
         spacing: 4
         rows: 4
@@ -44,9 +47,17 @@ Window {
                 y: 26
                 width: 100
                 height: 68
+                focus : true
                 text: vue1x1.cptQML
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 50
+                Keys.onPressed:{
+                    switch (event.key) {
+                        case Qt.Key_Up:
+                            vue1x1.increment()
+                            break;
+                    }
+                }
             }
         }
 
@@ -335,4 +346,42 @@ Window {
             }
         }
     }
+
+    Rectangle {
+        id: rectangle
+        x: 125
+        y: 104
+        width: 250
+        height: 75
+        color: "#ccccff"
+        radius: 5
+
+        Text {
+            id: score
+            x: 0
+            y: 0
+            width: 250
+            height: 45
+            text: qsTr("Score :")
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: 22
+        }
+    }
+
+
+    Text {
+        id: scoretotal
+        x: 125
+        y: 142
+        width: 250
+        height: 30
+        text: vuescore.cptQML
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: 20
+        focus : true
+}
+
+
 }

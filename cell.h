@@ -8,10 +8,13 @@ class Cell : public QObject
     Q_OBJECT
 public:
     Cell(QObject *parent = nullptr);
-    QString getValue() const;
+    QString readValue();
+    Q_INVOKABLE void increment();
+    Q_PROPERTY(QString cptQML READ readValue NOTIFY cptChanged)
 private:
-    QString value;
+    int value;
 signals:
+    void cptChanged();
 
 };
 
