@@ -381,7 +381,14 @@ Window {
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 20
         focus : true
+        Keys.onPressed: {
+            switch (event.key) {
+                case Qt.Key_Up:
+                    vuescore.increment();
+                    break;
+             }
 }
 
 
+}
 }

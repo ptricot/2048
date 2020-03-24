@@ -6,6 +6,7 @@
 #include <QQmlApplicationEngine>
 #include "cell.h"
 #include "compteur.h"
+#include "grid.h"
 
 int main(int argc, char *argv[])
 {
@@ -31,11 +32,21 @@ int main(int argc, char *argv[])
             );
         }
     }
+    Grid Grille(0);
+
+    for (int i=0; i<4; i++){
+        for (int j=0; j<4; j++){
+            if (Grille.read(i,j)==1){
+                grid[i][j].increment(1);
+            }
+        }}
+
     engine.load(url);
 
-    Compteur aCompteur;
-    engine.rootContext()->setContextProperty("vueObjetCpt", &aCompteur);
 
+
+    Compteur aCompteur;
+    engine.rootContext()->setContextProperty("vuescore", &aCompteur);
 
 
 

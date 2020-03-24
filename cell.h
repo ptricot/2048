@@ -9,7 +9,7 @@ class Cell : public QObject
 public:
     Cell(QObject *parent = nullptr);
     QString readValue();
-    Q_INVOKABLE void increment();
+    Q_INVOKABLE void increment(int a);
     Q_PROPERTY(QString cptQML READ readValue NOTIFY cptChanged)
 private:
     int value;
