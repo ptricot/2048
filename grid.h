@@ -15,6 +15,10 @@ public:
     void generer();
     bool defaite();
 
+    bool estegal  (const Grid &G,const Grid &D);
+    void copy (Grid &G,const Grid &D);
+    bool mvtinutile(int a);
+
 private :
     int Grille[4][4];
     Compteur score;

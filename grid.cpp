@@ -42,19 +42,64 @@ void Grid::generer(){
 }
 
 bool Grid::defaite(){
-    bool a =true ;
-    {int i,j;
-        for(i=0;i<4;i++){
-            for(j=0;j<4;j++){
-                if(Grille[i][j]!=0){a=false;}
-            }
-        }}
-    return a;
+    bool b =true ;
+    for(int a=0;a<4;a++){
+        b=b&&mvtinutile(a);
+    }
+    return b;
 }
 
 int Grid::read(int i, int j){
     return Grille [i][j];
 }
+
+bool Grid::estegal (const Grid &G,const Grid &D){
+    int i,j;
+    for(i=0;i<4;i++){
+        for(j=0;j<4;j++){
+            if(D.Grille[i][j]!=G.Grille[i][j]){return false;}
+        }}
+    return true;
+}
+
+void Grid::copy (Grid &G,const Grid &D){
+    if ( &D != &G) {
+        for(int i=0; i<4; i++)
+            for(int j=0; j<4; j++)
+                G.Grille[i][j] = D.Grille[i][j];
+    }
+
+}
+
+
+bool Grid::mvtinutile(int a){
+    if (a==0){
+        Grid G(0);
+        copy(G,*this);
+        G.Up();
+        return estegal(G,*this);
+        }
+    if (a==1){
+        Grid G(0);
+        copy(G,*this);
+        G.Down();
+        return estegal(G,*this);
+        }
+    if (a==2){
+        Grid G(0);
+        copy(G,*this);
+        G.Left();
+        return estegal(G,*this);
+        }
+    if (a==3){
+        Grid G(0);
+        copy(G,*this);
+        G.Rigth();
+        return estegal(G,*this);
+        }
+    return true;
+    }
+
 
 
 void Grid::Up()
