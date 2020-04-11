@@ -60,13 +60,13 @@ int Grid::read(int i, int j){
 void Grid::Up()
 {
 for (int j=0;j<4;j++){
-    for(int i=0; i<4; i++){
+    for(int i=1; i<4; i++){
         if (Grille[i][j]!=0){
-            int k=i;
-            while(k>-1 && Grille[k][j]==0){
+            int k=i-1;
+            while(k>0 && Grille[k][j]==0){
                 k--;
             }
-            if (k==0){
+            if (k==0 && Grille[k][j]==0){
                 Grille[0][j]= Grille[i][j];
                 Grille[i][j]=0;
             }
@@ -77,6 +77,7 @@ for (int j=0;j<4;j++){
             if (k!=i && Grille[i][j]==Grille[k][j]){
                 Grille[k][j]= Grille[i][j]+1;
                 Grille[i][j]=0;
+                score.increment(Grille[i][j]);
             }
 
         }
@@ -89,14 +90,14 @@ for (int j=0;j<4;j++){
 void Grid::Down()
 {
 for (int j=0;j<4;j++){
-    for(int i=3; i>-1; i--){
+    for(int i=2; i>-1; i--){
         if (Grille[i][j]!=0){
-            int k=i;
-            while(k<4 && Grille[k][j]==0){
+            int k=i+1;
+            while(k<3 && Grille[k][j]==0){
                 k++;
             }
-            if (k==4){
-                Grille[0][j]= Grille[i][j];
+            if (k==3 && Grille[k][j]==0){
+                Grille[k][j]= Grille[i][j];
                 Grille[i][j]=0;
             }
             if ((k-1)!=i && Grille[i][j]!=Grille[k][j]){
@@ -106,6 +107,7 @@ for (int j=0;j<4;j++){
             if (k!=i && Grille[i][j]==Grille[k][j]){
                 Grille[k][j]= Grille[i][j]+1;
                 Grille[i][j]=0;
+                score.increment(Grille[i][j]);
             }
 
         }
@@ -118,23 +120,24 @@ for (int j=0;j<4;j++){
 void Grid::Left()
 {
 for (int i=0;i<4;i++){
-    for(int j=3; j>-1; j--){
+    for(int j=1; j<4; j++){
         if (Grille[i][j]!=0){
-            int k=j;
-            while(k<4 && Grille[k][j]==0){
-                k++;
+            int k=j-1;
+            while(k>0 && Grille[k][j]==0){
+                k--;
             }
-            if (k==4){
-                Grille[0][j]= Grille[i][j];
+            if (k==0){
+                Grille[i][k]= Grille[i][j];
                 Grille[i][j]=0;
             }
-            if ((k-1)!=j && Grille[i][j]!=Grille[k][j]){
-                Grille[k-1][j]= Grille[i][j];
+            if ((k+1)!=j && Grille[i][j]!=Grille[i][k]){
+                Grille[i][k+1]= Grille[i][j];
                 Grille[i][j]=0;
             }
-            if (k!=j && Grille[i][j]==Grille[k][j]){
+            if (k!=j && Grille[i][j]==Grille[i][k]){
                 Grille[k][j]= Grille[i][j]+1;
                 Grille[i][j]=0;
+                score.increment(Grille[i][j]);
             }
 
         }
@@ -147,23 +150,24 @@ for (int i=0;i<4;i++){
 void Grid::Rigth()
 {
 for (int i=0;i<4;i++){
-    for(int j=0; j<4; j++){
+    for(int j=3; j>-1; j--){
         if (Grille[i][j]!=0){
-            int k=j;
-            while(k>-1 && Grille[k][j]==0){
+            int k=j+1;
+            while(k<3 && Grille[i][k]==0){
                 k--;
             }
-            if (k==0){
-                Grille[0][j]= Grille[i][j];
+            if (k==3){
+                Grille[i][k]= Grille[i][j];
                 Grille[i][j]=0;
             }
-            if ((k+1)!=j && Grille[i][j]!=Grille[k][j]){
+            if ((k-1)!=j && Grille[i][j]!=Grille[i][k]){
                 Grille[k+1][j]= Grille[i][j];
                 Grille[i][j]=0;
             }
-            if (k!=j && Grille[i][j]==Grille[k][j]){
-                Grille[k][j]= Grille[i][j]+1;
+            if (k!=j && Grille[i][j]==Grille[i][k]){
+                Grille[i][k]= Grille[i][j]+1;
                 Grille[i][j]=0;
+                score.increment(Grille[i][j]);
             }
 
         }

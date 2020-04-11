@@ -1,6 +1,7 @@
 #ifndef GRID_H
 #define GRID_H
 #include"cell.h"
+#include"compteur.h"
 
 class Grid
 {
@@ -16,6 +17,7 @@ public:
 
 private :
     int Grille[4][4];
+    Compteur score;
 };
 
 #endif // GRID_H
