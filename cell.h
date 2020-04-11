@@ -8,10 +8,16 @@ class Cell : public QObject
     Q_OBJECT
 public:
     Cell(QObject *parent = nullptr);
-    QString getValue() const;
-private:
-    QString value;
+    Cell(const Cell &C);
+    QString readValue();
+    Cell operator=(const Cell &C);
+    Q_INVOKABLE void increment(int a);
+    Q_PROPERTY(QString cptQML READ readValue NOTIFY cptChanged)
+    void setValue(int value);
+    int getValue();
+    int value;
 signals:
+    void cptChanged();
 
 };
 

@@ -2,7 +2,11 @@
 #include <QQmlApplicationEngine>
 #include <QtQml>
 #include <string>
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
 #include "cell.h"
+#include "compteur.h"
+#include "grid.h"
 
 int main(int argc, char *argv[])
 {
@@ -19,16 +23,22 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
 
     //
-    Cell grid[4][4];
+    Grid grid;
+
     for (int i=0; i<4; i++){
         for (int j=0; j<4; j++){
             engine.rootContext()->setContextProperty(
                 QString::fromStdString("vue"+std::to_string(i+1)+"x"+std::to_string(j+1)),
-                &(grid[i][j])
+                &(grid.Grille[i][j])
             );
         }
     }
+
     engine.load(url);
+
+    Compteur aCompteur;
+    engine.rootContext()->setContextProperty("grid", &grid);
+    engine.rootContext()->setContextProperty("vuescore", &aCompteur);
 
     return app.exec();
 }

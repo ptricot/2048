@@ -6,16 +6,23 @@
 class Compteur : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString cptQML READ readCompteur NOTIFY cptChanged)
 public:
     explicit Compteur(QObject *parent = nullptr);
-    Q_INVOKABLE void increment();
-    Q_INVOKABLE void decrement();
+
+    Q_PROPERTY(QString cptQML READ readCompteur NOTIFY cptChanged);
+
     QString readCompteur();
-private:
-    int fCompteur;
+
+    Q_INVOKABLE void increment(int a);
+
 signals:
     void cptChanged();
+
+public slots:
+
+private:
+    int fCompteur;
 };
 
 #endif // COMPTEUR_H
+
