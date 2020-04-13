@@ -52,7 +52,7 @@ public:
 
     void generer(); // génère un 2 ou 4 à un endroit au hasard
     int readValue(int i, int j);
-    bool defaite();
+    bool libre();
     void coutGrid(); // pour les tests
 
     Q_INVOKABLE void save();

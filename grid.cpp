@@ -2,6 +2,8 @@
 #include "math.h"
 #include <iostream>
 #include <fstream>
+#include<windows.h>
+
 
 
 using namespace std;
@@ -44,8 +46,9 @@ void grid::up() {
 
         }
     }
+    generer();
     update();
-}
+    }
 void grid::down() {
     for (int j=0;j<4;j++){
         for(int i=2; i>-1; i--){
@@ -72,53 +75,27 @@ void grid::down() {
 
         }
     }
+    generer();
     update();
-}
-void grid::left() {
-    for (int i=0;i<4;i++){
-        for(int j=1; j<4; j++){
-            if (Grille[i][j]!=0){
-                int k=j-1;
-                while(k>0 && Grille[k][j]==0){
-                    k--;
-                }
-                if (k==0){
-                    Grille[i][k]= Grille[i][j];
-                    Grille[i][j]=0;
-                }
-                if ((k+1)!=j && Grille[i][j]!=Grille[i][k]){
-                    Grille[i][k+1]= Grille[i][j];
-                    Grille[i][j]=0;
-                }
-                if (k!=j && Grille[i][j]==Grille[i][k]){
-                    Grille[k][j]= Grille[i][j]+1;
-                    Grille[i][j]=0;
-                    score+=Grille[i][j];
-                }
 
-            }
-
-        }
     }
-    update();
-}
 void grid::right() {
     for (int i=0;i<4;i++){
-        for(int j=3; j>-1; j--){
+        for(int j=2; j>-1; j--){
             if (Grille[i][j]!=0){
                 int k=j+1;
                 while(k<3 && Grille[i][k]==0){
-                    k--;
+                    k++;
                 }
-                if (k==3){
+                if (k==3 && Grille[i][k]==0){
                     Grille[i][k]= Grille[i][j];
                     Grille[i][j]=0;
                 }
-                if ((k-1)!=j && Grille[i][j]!=Grille[i][k]){
-                    Grille[k+1][j]= Grille[i][j];
+                if ((k-1)!=i && Grille[i][j]!=Grille[i][k]){
+                    Grille[k-1][j]= Grille[i][j];
                     Grille[i][j]=0;
                 }
-                if (k!=j && Grille[i][j]==Grille[i][k]){
+                if (k!=i && Grille[i][j]==Grille[i][k]){
                     Grille[i][k]= Grille[i][j]+1;
                     Grille[i][j]=0;
                     score+=Grille[i][j];
@@ -128,10 +105,43 @@ void grid::right() {
 
         }
     }
+    generer();
     update();
-}
+
+    }
+void grid::left() {
+    for (int i=0;i<4;i++){
+        for(int j=1; j<4; j++){
+            if (Grille[i][j]!=0){
+                int k=j-1;
+                while(k>0 && Grille[i][k]==0){
+                    k--;
+                }
+                if (k==0 && Grille[i][k]==0){
+                    Grille[i][k]= Grille[i][j];
+                    Grille[i][j]=0;
+                }
+                if ((k+1)!=i && Grille[i][j]!=Grille[i][k]){
+                    Grille[i][k+1]= Grille[i][j];
+                    Grille[i][j]=0;
+                }
+                if (k!=i && Grille[i][j]==Grille[k][j]){
+                    Grille[i][k]= Grille[i][j]+1;
+                    Grille[i][j]=0;
+                    score+=Grille[i][j];
+                }
+
+            }
+
+        }
+    }
+    generer();
+    update();
+
+    }
 void grid::generer(){
-    if (!defaite()){
+
+    if (libre()){
         srand(time(NULL));
         float l = rand();
         int k;
@@ -150,13 +160,15 @@ void grid::generer(){
             }
         }
     }
+
+
 }
-bool grid::defaite(){
-    bool a =true ;
+bool grid::libre(){
+    bool a =false ;
     {int i,j;
         for(i=0;i<4;i++){
             for(j=0;j<4;j++){
-                if(Grille[i][j]!=0){a=false;}
+                if(Grille[i][j]==0){a=true;}
             }
         }}
     return a;
@@ -233,8 +245,7 @@ void grid::save(){
             {
                 for(int i=0;i<4;i++){
                     for(int j=0;j<4;j++){
-                        fichier << Grille[i][j];
-                        update();
+                        fichier << Grille[i][j]<<endl;
                     }
                 }
                     cerr << "Sauvegarde reussie" << endl;
@@ -252,17 +263,22 @@ void grid::charge(){
             if (fichier)
             {
 
-                    char contenu;
-                    while(fichier.get(contenu)){
-                        cout<<contenu<<endl;
-                        for(int i=0;i<4;i++){
-                            for(int j=0;j<4;j++){
-                                Grille[i][j]=contenu;
-                                update();
-                            }
+                    string ligne;
+                    int i=0;
+                    int j=0;
+                    while(getline(fichier,ligne)){
+                        int ia =  atoi(ligne.c_str());
+                        Grille[i][j]=ia;
+                        j++;
+                        if(j==4){
+                            i++;
+                            j=0;
                         }
 
+
+
                     }
+                    update();
                     fichier.close();
                     cerr << "Partie chargee" << endl;
             }
