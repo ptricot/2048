@@ -2,7 +2,6 @@
 #include "math.h"
 #include <iostream>
 #include <fstream>
-#include<windows.h>
 
 
 
@@ -48,7 +47,7 @@ void grid::up() {
     }
     generer();
     update();
-    }
+}
 void grid::down() {
     for (int j=0;j<4;j++){
         for(int i=2; i>-1; i--){
@@ -286,6 +285,102 @@ void grid::charge(){
                     cerr << "Impossible de charger une partie" << endl;
 
 }
+QString grid::readColor(int i, int j){
+    int val=Grille[i][j];
+    switch (val){
+        case 0:
+            return QString::fromStdString("#fdfdfd");
+            break;
+        case 1:
+            return QString::fromStdString("#fbebe8");
+            break;
+        case 2:
+            return QString::fromStdString("#f4e2df");
+            break;
+        case 3:
+            return QString::fromStdString("#f3a86c");
+            break;
+        case 4:
+            return QString::fromStdString("#fb833a");
+            break;
+        case 5:
+            return QString::fromStdString("#fb743a");
+            break;
+        case 6:
+            return QString::fromStdString("#fb573a");
+            break;
+        case 7:
+            return QString::fromStdString("#fbdc7c");
+            break;
+        case 8:
+            return QString::fromStdString("#fcd65f");
+            break;
+        case 9:
+            return QString::fromStdString("#fbcf45");
+            break;
+        case 10:
+            return QString::fromStdString("#fcc824");
+            break;
+        case 11:
+            return QString::fromStdString("#fec100");
+            break;
+        case 12:
+            return QString::fromStdString("#59c13a");
+            break;
+    }
+    return QString::fromStdString("#59c13a");
+}
+
+QString grid::color1x1(){
+    return readColor(0,0);
+}
+QString grid::color1x2(){
+    return readColor(0,1);
+}
+QString grid::color1x3(){
+    return readColor(0,2);
+}
+QString grid::color1x4(){
+    return readColor(0,3);
+}
+QString grid::color2x1(){
+    return readColor(1,0);
+}
+QString grid::color2x2(){
+    return readColor(1,1);
+}
+QString grid::color2x3(){
+    return readColor(1,2);
+}
+QString grid::color2x4(){
+    return readColor(1,3);
+}
+QString grid::color3x1(){
+    return readColor(2,0);
+}
+QString grid::color3x2(){
+    return readColor(2,1);
+}
+QString grid::color3x3(){
+    return readColor(2,2);
+}
+QString grid::color3x4(){
+    return readColor(2,3);
+}
+QString grid::color4x1(){
+    return readColor(3,0);
+}
+QString grid::color4x2(){
+    return readColor(3,1);
+}
+QString grid::color4x3(){
+    return readColor(3,2);
+}
+QString grid::color4x4(){
+    return readColor(3,3);
+}
+
+
 
 
 

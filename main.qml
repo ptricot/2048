@@ -6,7 +6,7 @@ Window {
     visible: true
     width: 500
     height: 700
-    color: "#4c5cdc"
+    color: "#bb8888"
     property alias scoretotalText: scoretotal.text
     title: qsTr("2048 par Lhamap et Khayne")
 
@@ -42,7 +42,7 @@ Window {
             id: c1
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o1x1QML
             radius: 5
             border.width: 0
 
@@ -64,7 +64,7 @@ Window {
             id: c2
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o1x2QML
             radius: 5
             border.width: 0
             Text {
@@ -83,7 +83,7 @@ Window {
             id: c3
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o1x3QML
             radius: 5
             border.width: 0
             Text {
@@ -102,7 +102,7 @@ Window {
             id: c4
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o1x4QML
             radius: 5
             border.width: 0
             Text {
@@ -121,7 +121,7 @@ Window {
             id: c5
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o2x1QML
             radius: 5
             border.width: 0
             Text {
@@ -140,7 +140,7 @@ Window {
             id: c6
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o2x2QML
             radius: 5
             border.width: 0
             Text {
@@ -159,7 +159,7 @@ Window {
             id: c7
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o2x3QML
             radius: 5
             border.width: 0
             Text {
@@ -178,7 +178,7 @@ Window {
             id: c8
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o2x4QML
             radius: 5
             border.width: 0
             Text {
@@ -197,7 +197,7 @@ Window {
             id: c9
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o3x1QML
             radius: 5
             border.width: 0
             Text {
@@ -216,7 +216,7 @@ Window {
             id: c10
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o3x2QML
             radius: 5
             border.width: 0
             Text {
@@ -235,7 +235,7 @@ Window {
             id: c11
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o3x3QML
             radius: 5
             border.width: 0
             Text {
@@ -254,7 +254,7 @@ Window {
             id: c12
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o3x4QML
             radius: 5
             border.width: 0
             Text {
@@ -273,7 +273,7 @@ Window {
             id: c13
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o4x1QML
             radius: 5
             border.width: 0
             Text {
@@ -292,7 +292,7 @@ Window {
             id: c14
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o4x2QML
             radius: 5
             border.width: 0
             Text {
@@ -311,7 +311,7 @@ Window {
             id: c15
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o4x3QML
             radius: 5
             border.width: 0
             Text {
@@ -330,7 +330,7 @@ Window {
             id: c16
             width: 120
             height: 120
-            color: "#ccccff"
+            color: vueGrid.o4x4QML
             radius: 5
             border.width: 0
             Text {
@@ -352,7 +352,7 @@ Window {
         y: -90
         width: 250
         height: 75
-        color: "#ccccff"
+        color: "#eeaaaa"
         radius: 5
 
         Text {
@@ -388,9 +388,9 @@ Window {
         id: c17
         x: 20
         y: -170
-        width: 202
+        width: 220
         height: 60
-        color: "#ccccff"
+        color: "#eeaaaa"
         radius: 5
         focus : true
         MouseArea {
@@ -407,7 +407,7 @@ Window {
 
         Text {
             id: t17
-            x: 51
+            x: 57
             y: 15
             width: 100
             height: 68
@@ -425,7 +425,7 @@ Window {
             y: 0
             width: 202
             height: 60
-            color: "#ccccff"
+            color: "#eeaaaa"
             radius: 5
             focus : true
             Text {
