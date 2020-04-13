@@ -1,6 +1,9 @@
 #include "grid.h"
 #include "math.h"
 #include <iostream>
+#include <fstream>
+
+
 using namespace std;
 
 grid::grid(QObject *parent) : QObject(parent)
@@ -222,3 +225,51 @@ void grid::coutGrid() { // Pour les tests
         cout<<endl;
     }
 }
+
+void grid::save(){
+    ofstream fichier("sauvegarde.txt", ios::out | ios::trunc);  // ouverture en écriture avec effacement du fichier ouvert
+
+            if(fichier)
+            {
+                for(int i=0;i<4;i++){
+                    for(int j=0;j<4;j++){
+                        fichier << Grille[i][j];
+                        update();
+                    }
+                }
+                    cerr << "Sauvegarde reussie" << endl;
+                   fichier.close();
+            }
+            else
+                    cerr << "Impossible d'ouvrir le fichier !" << endl;
+    }
+
+
+void grid::charge(){
+
+    string mon_fichier = "sauvegarde.txt";
+         ifstream fichier(mon_fichier.c_str(), ios::in);
+            if (fichier)
+            {
+
+                    char contenu;
+                    while(fichier.get(contenu)){
+                        cout<<contenu<<endl;
+                        for(int i=0;i<4;i++){
+                            for(int j=0;j<4;j++){
+                                Grille[i][j]=contenu;
+                                update();
+                            }
+                        }
+
+                    }
+                    fichier.close();
+                    cerr << "Partie chargee" << endl;
+            }
+            else  // sinon
+                    cerr << "Impossible de charger une partie" << endl;
+
+}
+
+
+

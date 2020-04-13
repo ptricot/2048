@@ -1,6 +1,7 @@
 import QtQuick 2.2
 import QtQuick.Window 2.2
 
+
 Window {
     visible: true
     width: 500
@@ -22,18 +23,18 @@ Window {
         focus: true
         Keys.onPressed:{
             switch (event.key) {
-                case Qt.Key_Up:
-                    vueGrid.up();
-                    break;
-                case Qt.Key_Down:
-                    vueGrid.down();
-                    break;
-                case Qt.Key_Left:
-                    vueGrid.left();
-                    break;
-                case Qt.Key_Right:
-                    vueGrid.right();
-                    break;
+            case Qt.Key_Up:
+                vueGrid.up();
+                break;
+            case Qt.Key_Down:
+                vueGrid.down();
+                break;
+            case Qt.Key_Left:
+                vueGrid.left();
+                break;
+            case Qt.Key_Right:
+                vueGrid.right();
+                break;
             }
         }
 
@@ -51,8 +52,8 @@ Window {
                 y: 26
                 width: 100
                 height: 68
-                focus : true
                 text: vueGrid.c1x1QML
+                focus : true
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 50
 
@@ -343,12 +344,12 @@ Window {
                 horizontalAlignment: Text.AlignHCenter
             }
         }
-    }
+
 
     Rectangle {
         id: rectangle
         x: 125
-        y: 104
+        y: -90
         width: 250
         height: 75
         color: "#ccccff"
@@ -371,7 +372,7 @@ Window {
     Text {
         id: scoretotal
         x: 125
-        y: 142
+        y: -55
         width: 250
         height: 30
         text: vueGrid.scoreQML
@@ -380,4 +381,80 @@ Window {
         font.pixelSize: 20
         focus : true
     }
+
+
+
+    Rectangle {
+        id: c17
+        x: 20
+        y: -170
+        width: 202
+        height: 60
+        color: "#ccccff"
+        radius: 5
+        focus : true
+        MouseArea {
+            id: mouseArea
+            x: 0
+            y: 0
+            width: 202
+            height: 60
+            acceptedButtons: Qt.LeftButton | Qt.RightButton
+            onClicked: {
+                vueGrid.save();
+            }
+        }
+
+        Text {
+            id: t17
+            x: 51
+            y: 15
+            width: 100
+            height: 68
+            text: "Sauvegarder la Partie"
+            focus: true
+            font.pixelSize: 20
+            horizontalAlignment: Text.AlignHCenter
+        }
+        border.width: 0
+
+
+        Rectangle {
+            id: c18
+            x: 252
+            y: 0
+            width: 202
+            height: 60
+            color: "#ccccff"
+            radius: 5
+            focus : true
+            Text {
+                id: t18
+                x: 51
+                y: 15
+                width: 100
+                height: 68
+                text: "Charger la Partie"
+                focus: true
+                font.pixelSize: 20
+                horizontalAlignment: Text.AlignHCenter
+            }
+
+            MouseArea {
+                id: mouseArea2
+                x: 0
+                y: 0
+                width: 202
+                height: 60
+                acceptedButtons: Qt.LeftButton | Qt.RightButton
+                onClicked: {
+                    vueGrid.charge();
+                }
+            }
+            border.width: 0
+        }
+
+    }
+
+}
 }

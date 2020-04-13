@@ -55,6 +55,9 @@ public:
     bool defaite();
     void coutGrid(); // pour les tests
 
+    Q_INVOKABLE void save();
+    Q_INVOKABLE void charge();
+
 private:
     int score;
     int Grille[4][4];
