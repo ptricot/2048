@@ -19,7 +19,53 @@ grid::grid(QObject *parent) : QObject(parent)
     generer();
     update();
 }
+
+bool grid::defaite(){
+    bool b =true ;
+    for(int a=0;a<4;a++){
+        b=b&&mvtinutile(a);
+    }
+    if (b){cout<<"partie terminee";}
+    return b;
+}
+
+bool grid::estegal (const grid &G){
+    int i,j;
+    for(i=0;i<4;i++){
+        for(j=0;j<4;j++){
+            if(Grille[i][j]!=G.Grille[i][j]){return false;}
+        }}
+    return true;
+}
+
+
+bool grid::mvtinutile(int a){
+    grid G;
+    for(int i=0; i<4; i++)
+        for(int j=0; j<4; j++)
+            G.Grille[i][j] = Grille[i][j];
+    if (a==0){
+        G.up();
+        return estegal(G);
+        }
+    if (a==1){
+        G.down();
+        return estegal(G);
+        }
+    if (a==2){
+        G.left();
+        return estegal(G);
+        }
+    if (a==3){
+        G.right();
+        return estegal(G);
+        }
+    return true;
+    }
+
+
 void grid::up() {
+    if(!mvtinutile(0)){
     for (int j=0;j<4;j++){
         for(int i=1; i<4; i++){
             if (Grille[i][j]!=0){
@@ -47,8 +93,10 @@ void grid::up() {
     }
     generer();
     update();
-}
+    //defaite();
+}}
 void grid::down() {
+    if(!mvtinutile(1)){
     for (int j=0;j<4;j++){
         for(int i=2; i>-1; i--){
             if (Grille[i][j]!=0){
@@ -76,9 +124,10 @@ void grid::down() {
     }
     generer();
     update();
-
-    }
+    defaite();
+    }}
 void grid::right() {
+    if(!mvtinutile(3)){
     for (int i=0;i<4;i++){
         for(int j=2; j>-1; j--){
             if (Grille[i][j]!=0){
@@ -90,11 +139,11 @@ void grid::right() {
                     Grille[i][k]= Grille[i][j];
                     Grille[i][j]=0;
                 }
-                if ((k-1)!=i && Grille[i][j]!=Grille[i][k]){
-                    Grille[k-1][j]= Grille[i][j];
+                if ((k-1)!=j && Grille[i][j]!=Grille[i][k]){
+                    Grille[i][k-1]= Grille[i][j];
                     Grille[i][j]=0;
                 }
-                if (k!=i && Grille[i][j]==Grille[i][k]){
+                if (k!=j && Grille[i][j]==Grille[i][k]){
                     Grille[i][k]= Grille[i][j]+1;
                     Grille[i][j]=0;
                     score+=Grille[i][j];
@@ -106,9 +155,10 @@ void grid::right() {
     }
     generer();
     update();
-
-    }
+    defaite();
+    }}
 void grid::left() {
+    if(!mvtinutile(2)){
     for (int i=0;i<4;i++){
         for(int j=1; j<4; j++){
             if (Grille[i][j]!=0){
@@ -117,14 +167,14 @@ void grid::left() {
                     k--;
                 }
                 if (k==0 && Grille[i][k]==0){
-                    Grille[i][k]= Grille[i][j];
+                    Grille[i][0]= Grille[i][j];
                     Grille[i][j]=0;
                 }
-                if ((k+1)!=i && Grille[i][j]!=Grille[i][k]){
+                if ((k+1)!=j && Grille[i][j]!=Grille[i][k]){
                     Grille[i][k+1]= Grille[i][j];
                     Grille[i][j]=0;
                 }
-                if (k!=i && Grille[i][j]==Grille[k][j]){
+                if (k!=j && Grille[i][j]==Grille[i][k]){
                     Grille[i][k]= Grille[i][j]+1;
                     Grille[i][j]=0;
                     score+=Grille[i][j];
@@ -136,8 +186,8 @@ void grid::left() {
     }
     generer();
     update();
-
-    }
+    defaite();
+}}
 void grid::generer(){
 
     if (libre()){
