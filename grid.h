@@ -93,6 +93,10 @@ public:
     Q_INVOKABLE void save();
     Q_INVOKABLE void charge();
 
+    bool estegal  (const grid &G);
+    bool mvtinutile(int a);
+    bool defaite();
+
 private:
     int score;
     int Grille[4][4];
