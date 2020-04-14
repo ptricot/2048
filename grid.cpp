@@ -35,12 +35,18 @@ grid::grid(QObject *parent) : QObject(parent)
 }
 
 bool grid::defaite(){
-    bool b =true ;
-    for(int a=0;a<4;a++){
-        b=b&&mvtinutile(a);
+    bool lost = true;
+    if (libre()){lost=false;}
+    for (int i=0; i<4; i++){
+        for (int j=0; j<3; j++){
+            if (Grille[i][j]==Grille[i][j+1]){lost=false;}
+            if (Grille[j][i]==Grille[j+1][i]){lost=false;}
+        }
     }
-    if (b){cout<<"partie terminee";}
-    return b;
+    if (lost){
+    cout<<"Partie terminée !";
+    }
+    return lost;
 }
 
 bool grid::estegal (const grid &G){
@@ -225,6 +231,16 @@ void grid::generer(){
     }
 
 }
+
+QString grid::defeatTest(){
+    if (defaite()){
+        return QString::fromStdString("Partie terminée !");
+    }
+    else {
+        return QString::fromStdString("");
+    }
+}
+
 bool grid::libre(){
     bool a =false ;
     {int i,j;
@@ -441,6 +457,17 @@ QString grid::color4x3(){
 }
 QString grid::color4x4(){
     return readColor(3,3);
+}
+void grid::reset(){
+    score=0;
+    for (int i=0; i<4; i++){
+        for (int j=0; j<4; j++){
+            Grille[i][j]=0;
+        }
+    }
+    generer();
+    generer();
+    update();
 }
 
 

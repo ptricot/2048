@@ -13,6 +13,7 @@ public:
     Q_INVOKABLE void left();
     Q_INVOKABLE void right();
     Q_PROPERTY(QString scoreQML READ readScore NOTIFY update)
+    Q_PROPERTY(QString defeatQML READ defeatTest NOTIFY update)
 
     Q_PROPERTY(QString c1x1QML READ read1x1 NOTIFY update)
     Q_PROPERTY(QString c1x2QML READ read1x2 NOTIFY update)
@@ -89,6 +90,7 @@ public:
     bool libre();
     void coutGrid(); // pour les tests
     QString readColor(int i, int j);
+    QString defeatTest();
 
     Q_INVOKABLE void save();
     Q_INVOKABLE void charge();
@@ -97,6 +99,7 @@ public:
     Q_INVOKABLE bool mvtinutile(int a);
     Q_INVOKABLE bool defaite();
     Q_INVOKABLE void sleep();
+    Q_INVOKABLE void reset();
 
 private:
     int score;

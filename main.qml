@@ -26,34 +26,28 @@ Window {
             switch (event.key) {
             case Qt.Key_Up:
                 if(!vueGrid.mvtinutile(0)){
-                vueGrid.up();
-                vueGrid.defaite();
-                vueGrid.generer();
-                vueGrid.update();}
+                    vueGrid.up();
+                    vueGrid.generer();
+                    vueGrid.update();}
                 break;
             case Qt.Key_Down:
                 if(!vueGrid.mvtinutile(1)){
-                vueGrid.down();
-                vueGrid.defaite();
-                vueGrid.update();
-
-                vueGrid.generer();
-                vueGrid.update();
+                    vueGrid.down();
+                    vueGrid.generer();
+                    vueGrid.update();
                 }
                 break;
             case Qt.Key_Left:
                 if(!vueGrid.mvtinutile(2)){
-                vueGrid.left();
-                vueGrid.defaite();
-                vueGrid.generer();
-                vueGrid.update();}
+                    vueGrid.left();
+                    vueGrid.generer();
+                    vueGrid.update();}
                 break;
             case Qt.Key_Right:
                 if(!vueGrid.mvtinutile(3)){
-                vueGrid.right();
-                vueGrid.defaite();
-                vueGrid.generer();
-                vueGrid.update();}
+                    vueGrid.right();
+                    vueGrid.generer();
+                    vueGrid.update();}
                 break;
             }
 
@@ -367,115 +361,160 @@ Window {
         }
 
 
-    Rectangle {
-        id: rectangle
-        x: 125
-        y: -90
-        width: 250
-        height: 75
-        color: "#eeaaaa"
-        radius: 5
+        Rectangle {
+            id: rectangle
+            x: 12
+            y: -90
+            width: 220
+            height: 75
+            color: "#eeaaaa"
+            radius: 5
 
-        Text {
-            id: score
-            x: 0
-            y: 0
-            width: 250
-            height: 45
-            text: qsTr("Score :")
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: 22
-        }
-    }
-
-
-    Text {
-        id: scoretotal
-        x: 125
-        y: -55
-        width: 250
-        height: 30
-        text: vueGrid.scoreQML
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
-        font.pixelSize: 20
-        focus : true
-    }
-
-
-
-    Rectangle {
-        id: c17
-        x: 20
-        y: -170
-        width: 220
-        height: 60
-        color: "#eeaaaa"
-        radius: 5
-        focus : true
-        MouseArea {
-            id: mouseArea
-            x: 0
-            y: 0
-            width: 202
-            height: 60
-            acceptedButtons: Qt.LeftButton | Qt.RightButton
-            onClicked: {
-                vueGrid.save();
+            Text {
+                id: score
+                x: 0
+                y: 0
+                width: 220
+                height: 45
+                text: qsTr("Score :")
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                font.pixelSize: 22
             }
         }
 
+
         Text {
-            id: t17
-            x: 57
-            y: 15
-            width: 100
-            height: 68
-            text: "Sauvegarder la Partie"
-            focus: true
-            font.pixelSize: 20
+            id: scoretotal
+            x: 12
+            y: -55
+            width: 220
+            height: 30
+            text: vueGrid.scoreQML
+            verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: 20
+            focus : true
         }
-        border.width: 0
+
 
 
         Rectangle {
-            id: c18
-            x: 252
-            y: 0
-            width: 202
+            id: c17
+            x: 20
+            y: -170
+            width: 150
             height: 60
             color: "#eeaaaa"
             radius: 5
             focus : true
+            MouseArea {
+                id: mouseArea
+                x: 0
+                y: 0
+                width: 150
+                height: 60
+                acceptedButtons: Qt.LeftButton | Qt.RightButton
+                onClicked: {
+                    vueGrid.save();
+                }
+            }
+
             Text {
-                id: t18
-                x: 51
-                y: 15
+                id: t17
+                x: 25
+                y: 8
                 width: 100
                 height: 68
-                text: "Charger la Partie"
+                text: "Sauvegarder"
                 focus: true
                 font.pixelSize: 20
                 horizontalAlignment: Text.AlignHCenter
             }
-
-            MouseArea {
-                id: mouseArea2
-                x: 0
-                y: 0
-                width: 202
-                height: 60
-                acceptedButtons: Qt.LeftButton | Qt.RightButton
-                onClicked: {
-                    vueGrid.charge();
-                }
-            }
             border.width: 0
+
+
+            Rectangle {
+                id: c18
+                x: 171
+                y: 0
+                width: 115
+                height: 60
+                color: "#eeaaaa"
+                radius: 5
+                focus : true
+                Text {
+                    id: t18
+                    x: 8
+                    y: 8
+                    width: 100
+                    height: 68
+                    text: "Charger"
+                    focus: true
+                    font.pixelSize: 20
+                    horizontalAlignment: Text.AlignHCenter
+                }
+
+                MouseArea {
+                    id: mouseArea2
+                    x: 0
+                    y: 0
+                    width: 115
+                    height: 60
+                    acceptedButtons: Qt.LeftButton | Qt.RightButton
+                    onClicked: {
+                        vueGrid.charge();
+                    }
+                }
+                border.width: 0
+            }
+
+            Rectangle {
+                id: c19
+                x: 308
+                y: 0
+                width: 150
+                height: 60
+                color: "#eeaaaa"
+                radius: 5
+                focus: true
+                MouseArea {
+                    id: mouseArea1
+                    x: 0
+                    y: 0
+                    width: 150
+                    height: 60
+                    acceptedButtons: Qt.LeftButton | Qt.RightButton
+                    onClicked: {
+                        vueGrid.reset();
+                    }
+                }
+
+                Text {
+                    id: t19
+                    x: 25
+                    y: 8
+                    width: 100
+                    height: 68
+                    text: "Reset"
+                    focus: true
+                    font.pixelSize: 20
+                    horizontalAlignment: Text.AlignHCenter
+                }
+                border.width: 0
+            }
+
         }
 
     }
 
-}
+    Text {
+        id: element
+        x: 259
+        y: 132
+        width: 220
+        height: 40
+        text: vueGrid.defeatQML
+        font.pixelSize: 22
+    }
 }
