@@ -3,15 +3,18 @@
 
 #include <QObject>
 
-class Cell : public QObject
+class cell : public QObject
 {
     Q_OBJECT
 public:
-    Cell(QObject *parent = nullptr);
-    QString getValue() const;
+    explicit cell(QObject *parent = nullptr);
+    //Q_PROPERTY(QString valueQML READ readValue NOTIFY valueChanged)
+    //QString readValue();
 private:
-    QString value;
+    int value;
+
 signals:
+    //void valueChanged();
 
 };
 

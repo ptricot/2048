@@ -1,9 +1,11 @@
 #include "cell.h"
 
-Cell::Cell(QObject *parent) : QObject(parent)
+cell::cell(QObject *parent) : QObject(parent)
 {
-    value = " ";
+    value = 0;
 }
-QString Cell::getValue() const {
-    return (value);
+/*
+QString cell::readValue(){
+    return QString::number(value);
 }
+*/
