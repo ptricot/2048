@@ -3,6 +3,7 @@
 #include <QtQml>
 #include"grid.h"
 #include <fstream>
+#include <windows.h>
 
 int main(int argc, char *argv[])
 {

@@ -2,6 +2,7 @@
 #include "math.h"
 #include <iostream>
 #include <fstream>
+#include <windows.h>
 
 
 
@@ -34,6 +35,7 @@ bool grid::estegal (const grid &G){
     for(i=0;i<4;i++){
         for(j=0;j<4;j++){
             if(Grille[i][j]!=G.Grille[i][j]){return false;}
+
         }}
     return true;
 }
@@ -65,7 +67,6 @@ bool grid::mvtinutile(int a){
 
 
 void grid::up() {
-    if(!mvtinutile(0)){
     for (int j=0;j<4;j++){
         for(int i=1; i<4; i++){
             if (Grille[i][j]!=0){
@@ -91,12 +92,10 @@ void grid::up() {
 
         }
     }
-    generer();
+
     update();
-    //defaite();
-}}
+}
 void grid::down() {
-    if(!mvtinutile(1)){
     for (int j=0;j<4;j++){
         for(int i=2; i>-1; i--){
             if (Grille[i][j]!=0){
@@ -122,12 +121,11 @@ void grid::down() {
 
         }
     }
-    generer();
+
     update();
-    defaite();
-    }}
+
+    }
 void grid::right() {
-    if(!mvtinutile(3)){
     for (int i=0;i<4;i++){
         for(int j=2; j>-1; j--){
             if (Grille[i][j]!=0){
@@ -153,12 +151,11 @@ void grid::right() {
 
         }
     }
-    generer();
+
     update();
-    defaite();
-    }}
+
+    }
 void grid::left() {
-    if(!mvtinutile(2)){
     for (int i=0;i<4;i++){
         for(int j=1; j<4; j++){
             if (Grille[i][j]!=0){
@@ -184,10 +181,13 @@ void grid::left() {
 
         }
     }
-    generer();
+
     update();
-    defaite();
-}}
+
+}
+void grid::sleep(){
+    Sleep(500);
+}
 void grid::generer(){
 
     if (libre()){
@@ -209,7 +209,6 @@ void grid::generer(){
             }
         }
     }
-
 
 }
 bool grid::libre(){

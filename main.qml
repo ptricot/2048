@@ -2,6 +2,7 @@ import QtQuick 2.2
 import QtQuick.Window 2.2
 
 
+
 Window {
     visible: true
     width: 500
@@ -24,18 +25,38 @@ Window {
         Keys.onPressed:{
             switch (event.key) {
             case Qt.Key_Up:
+                if(!vueGrid.mvtinutile(0)){
                 vueGrid.up();
+                vueGrid.defaite();
+                vueGrid.generer();
+                vueGrid.update();}
                 break;
             case Qt.Key_Down:
+                if(!vueGrid.mvtinutile(1)){
                 vueGrid.down();
+                vueGrid.defaite();
+                vueGrid.update();
+
+                vueGrid.generer();
+                vueGrid.update();
+                }
                 break;
             case Qt.Key_Left:
+                if(!vueGrid.mvtinutile(2)){
                 vueGrid.left();
+                vueGrid.defaite();
+                vueGrid.generer();
+                vueGrid.update();}
                 break;
             case Qt.Key_Right:
+                if(!vueGrid.mvtinutile(3)){
                 vueGrid.right();
+                vueGrid.defaite();
+                vueGrid.generer();
+                vueGrid.update();}
                 break;
             }
+
         }
 
         Rectangle {

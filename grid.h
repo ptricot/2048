@@ -84,7 +84,7 @@ public:
     QString read4x3();
     QString read4x4();
 
-    void generer(); // génère un 2 ou 4 à un endroit au hasard
+    Q_INVOKABLE void generer(); // génère un 2 ou 4 à un endroit au hasard
     int readValue(int i, int j);
     bool libre();
     void coutGrid(); // pour les tests
@@ -94,8 +94,9 @@ public:
     Q_INVOKABLE void charge();
 
     bool estegal  (const grid &G);
-    bool mvtinutile(int a);
-    bool defaite();
+    Q_INVOKABLE bool mvtinutile(int a);
+    Q_INVOKABLE bool defaite();
+    Q_INVOKABLE void sleep();
 
 private:
     int score;
